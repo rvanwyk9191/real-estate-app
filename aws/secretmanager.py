@@ -15,8 +15,8 @@ def getSecretFrom(key):
         service_name='secretsmanager',
         region_name=region_name
     )
-    
-    accountNumber = client.get_caller_identity()["Account"]    
+
+    accountNumber = session.client('sts').get_caller_identity()['Account']
     secret_name = "arn:aws:secretsmanager:us-east-1:" + accountNumber + ":secret:REAL-ESTATE-JXIyhK"    
     # In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
     # See https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
